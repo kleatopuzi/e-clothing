@@ -1,7 +1,13 @@
 import React from "react";
+
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+
+// import { useParams } from "react-router-dom";
+
 import "./menuitem-style.scss";
 
-const MenuItem = ({ title, imageUrl, size }) => {
+const MenuItem = ({ title, imageUrl, size, linkUrl, props }) => {
+  const para = useParams();
   return (
     <div className={`${size} menu-item`}>
       <div
@@ -17,4 +23,5 @@ const MenuItem = ({ title, imageUrl, size }) => {
     </div>
   );
 };
+
 export default MenuItem;
