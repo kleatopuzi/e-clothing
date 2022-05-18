@@ -2,15 +2,12 @@ import React from "react";
 import "./menuitem-style.scss";
 
 const MenuItem = ({ title, imageUrl, size }) => {
-  console.log(imageUrl);
-
   return (
     <div className={`${size} menu-item`}>
       <div
         className="image"
         style={{
           backgroundImage: `url(${imageUrl})`,
-          // backgroundImage: `url(https://i.ibb.co/px2tCc3/jackets.png)`,
         }}
       />
       <div className="content">
