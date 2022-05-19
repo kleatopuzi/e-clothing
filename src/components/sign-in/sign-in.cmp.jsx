@@ -3,7 +3,7 @@ import "./sign-in.styles.scss";
 
 import FormInput from "../form-input/form-input.cmp";
 import CustomButton from "../custom-button/custom-button.cmp";
-import { signInWithPopup } from "../../firebase/firebase-utils.js";
+import { signInWithGoogle } from "../../firebase/firebase-utils.js";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -29,6 +29,7 @@ class SignIn extends React.Component {
         <h2> i already have an accoiunt</h2>
         <span> Sign in with email and password</span>
         <form onSubmit={this.handleSubmit}>
+          ign
           <FormInput
             name="email"
             type="email"
@@ -43,8 +44,7 @@ class SignIn extends React.Component {
             label="password"
             handleChange={this.handleChange}
           />
-
-          <CustomButton onClick={signInWithPopup}>Sign in</CustomButton>
+          <CustomButton onClick={signInWithGoogle}>Sign in</CustomButton>
         </form>
       </div>
     );
