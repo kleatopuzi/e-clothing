@@ -3,6 +3,8 @@ import "./sign-in.styles.scss";
 
 import FormInput from "../form-input/form-input.cmp";
 import CustomButton from "../custom-button/custom-button.cmp";
+import { signInWithPopup } from "../../firebase/firebase-utils.js";
+
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,7 @@ class SignIn extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.setState({ email: "", password: "" });
+    // console.log(event);
   };
   handleChange = (event) => {
     const { value, name } = event.target;
@@ -41,7 +44,7 @@ class SignIn extends React.Component {
             handleChange={this.handleChange}
           />
 
-          <CustomButton type="submit">Sign in</CustomButton>
+          <CustomButton onClick={signInWithPopup}>Sign in</CustomButton>
         </form>
       </div>
     );
