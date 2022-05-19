@@ -1,8 +1,7 @@
 import React from "react";
+import "./directory.style.scss";
 
 import MenuItem from "../menu-item/menuitem-cmp";
-
-import "./directory.style.scss";
 
 class Directory extends React.Component {
   constructor() {

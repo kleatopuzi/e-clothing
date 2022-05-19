@@ -1,7 +1,7 @@
 import React from "react";
-import CollectionItem from "../collection-item/collection-item.cmp";
-
 import "./preview-collections.style.scss";
+
+import CollectionItem from "../collection-item/collection-item.cmp";
 
 const PreviewCollection = ({ title, items }) => {
   console.log(items);
