@@ -4,7 +4,7 @@ import "./preview-collections.style.scss";
 import CollectionItem from "../collection-item/collection-item.cmp";
 
 const PreviewCollection = ({ title, items }) => {
-  console.log(items);
+  // console.log(items);
 
   return (
     <div className="collection-preview">
@@ -12,8 +12,8 @@ const PreviewCollection = ({ title, items }) => {
       <div className="preview">
         {items
           .filter((item, idx) => idx < 4)
-          .map(({ id, ...itemProps }) => (
-            <CollectionItem key={id} {...itemProps} />
+          .map((item) => (
+            <CollectionItem key={item.id} item={item} />
             // <div key={item.id}> {item.name}</div>
           ))}
       </div>
