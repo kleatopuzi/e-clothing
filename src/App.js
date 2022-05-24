@@ -7,6 +7,7 @@ import "./App.css";
 import HomePage from "./pages/homepage/homepage.cmp";
 import ShopPage from "./pages/shop/shop.cmp";
 import Header from "./components/header/header.cmp";
+import CheckoutPage from "./pages/checkout/checkout.cmp";
 import SignInAndSignUpPage from "./pages/signin-signup/signIn-signUp.cmp";
 import { setCurrentUser } from "./redux/user/user.actions.js";
 import { selectCurrentUser } from "./redux/user/user.selectors.js";
@@ -45,7 +46,7 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/shop" element={<ShopPage />}></Route>
-          {/* <Route path="/signin" render={() => <Navigate to="/" replace />} /> */}
+          <Route path="/checkout" element={<CheckoutPage />}></Route>
           {/* <Route exact path="/signin" element={<Navigate replace to="/" />} /> */}
 
           <Route
