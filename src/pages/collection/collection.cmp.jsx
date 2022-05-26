@@ -1,25 +1,26 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { selectCollection } from "../../redux/shop/shop.selector";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CollectionItem from "../../components/collection-item/collection-item.cmp";
 import "./collection.style.scss";
+import useCurrentPath from "../../utils/path.pattern.utils";
 
 const CollectionPage = ({ collection }) => {
   const params = useParams();
-  collection = params;
-  // let location = useLocation();
-  // params = collection;
-  // console.log("LOG", collection);
-  console.log("LOG", params, collection);
+  const myCollection = useSelector((state) =>
+    selectCollection(params.collectionId)(state)
+  );
+  // lo = useLocation();
+  console.log("LOG", myCollection);
+
   return (
     <div className="category">
       <h2>CATEGORY PAGE</h2>
     </div>
   );
 };
-const mapStateToProps = (state, ownProps) => ({
-  collection: selectCollection(ownProps.collectionId)(state),
+const mapStateToProps = (state) => ({
+  collection: selectCollection(state),
 });
-
 export default connect(mapStateToProps)(CollectionPage);
