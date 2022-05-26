@@ -1,15 +1,12 @@
 import React from "react";
-
-// import { useParams } from "react-router-dom";
-
-// import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./menuitem-style.scss";
 
 const MenuItem = ({ title, imageUrl, size, linkUrl, props }) => {
   // const para = useParams();
   return (
-    <div className={`${size} menu-item`}>
+    <Link className={`${size} menu-item`} to={linkUrl}>
       <div
         className="image"
         style={{
@@ -20,7 +17,7 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, props }) => {
         <h1 className="title">{title.toUpperCase()}</h1>
         <span className="subtitle">SHOP NOW</span>
       </div>
-    </div>
+    </Link>
   );
 };
 
