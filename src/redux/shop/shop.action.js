@@ -4,31 +4,29 @@ import {
   convertCollectionsSnapshotToMap,
 } from "../../firebase/firebase-utils";
 
-export const fetchCollectionStart = () => ({
+export const fetchCollectionsStart = () => ({
   type: ShopActionTypes.FETCH_COLLECTIONS_START,
 });
 
-export const fetchCollectionSuccess = (collectionsMaps) => ({
+export const fetchCollectionsSuccess = (collectionsMaps) => ({
   type: ShopActionTypes.FETCH_COLLECTIONS_SUCCESS,
   payload: collectionsMaps,
 });
 export const fetchCollectionStartAsync = () => {
   return (dispatch) => {
-    const collectionRef = firestore.collection("collections");
-    dispatch(fetchCollectionStart());
-
-    collectionRef
-      .get()
-      .then((snapShot) => {
-        const collectionsMaps = convertCollectionsSnapshotToMap(snapShot);
-
-        dispatch(fetchCollectionSuccess(collectionsMaps));
-      })
-      .catch((error) => dispatch(fetchCollectionFailure(error.message)));
+    // const collectionRef = firestore.collection("collections");
+    // dispatch(fetchCollectionStart());
+    // collectionRef
+    //   .get()
+    //   .then((snapShot) => {
+    //     const collectionsMaps = convertCollectionsSnapshotToMap(snapShot);
+    //     dispatch(fetchCollectionsSuccess(collectionsMaps));
+    //   })
+    //   .catch((error) => dispatch(fetchCollectionsFailure(error.message)));
   };
 };
 
-export const fetchCollectionFailure = (errorMessage) => ({
+export const fetchCollectionsFailure = (errorMessage) => ({
   type: ShopActionTypes.FETCH_COLLECTIONS_FAILURE,
   payload: errorMessage,
 });
