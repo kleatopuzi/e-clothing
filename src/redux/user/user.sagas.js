@@ -11,9 +11,11 @@ import {
   signInSuccess,
   signOutFailure,
   signOutSuccess,
+  signUpSuccess,
+  signUpFailure,
 } from "./user.actions";
 
-// CUSTOMISET functionS
+// CUSTOMISED function
 export function* getSnapshotFromUserAuth(userAuth) {
   try {
     const userRef = yield call(createUserProfileDocument, userAuth);
@@ -53,6 +55,7 @@ export function* isUserAuthenticated() {
     yield put(signInFailure(error));
   }
 }
+
 export function* signOut() {
   try {
     yield auth.signOut();
@@ -73,8 +76,23 @@ export function* onGoogleSignInStart() {
 export function* onCheckUserSession() {
   yield takeLatest(UserActionTypes.CHECK_USER_SESSION, isUserAuthenticated);
 }
+
 export function* onSignOutStart() {
   yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut);
+}
+export function* signUp({
+  payload: { displayName, email, password, confirmPassword },
+}) {
+  // try {
+  const { user } = yield auth.signInWithEmailAndPassword(email, password);
+  //   yield getSnapshotFromUserAuth(user);
+  //   // console.log("aaaaaaa", userRef);
+  // } catch (error) {
+  //   yield put(signInFailure(error));
+  // }
+}
+export function* onSignUpStart() {
+  yield takeLatest(UserActionTypes.SIGN_UP_START, signUp);
 }
 
 export function* userSagas() {
