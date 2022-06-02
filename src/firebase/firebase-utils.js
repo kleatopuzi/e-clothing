@@ -57,6 +57,9 @@ export const convertCollectionsSnapshotToMap = (collections) => {
   }, {});
   // console.log("transformedCollection", transformedCollection);
 };
+
+// FUNCTION TO ADD DATA DYNAMICLY TO THE STORE
+
 // export const addCollectionAndDocuments = async (
 //   collectionKey,
 //   objectsToAdd
@@ -70,12 +73,13 @@ export const convertCollectionsSnapshotToMap = (collections) => {
 //   });
 //   return await batch.commit();
 // };
+
 export const firestore = firebase.firestore();
 export const auth = firebase.auth();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
