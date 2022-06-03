@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.css";
@@ -12,44 +12,33 @@ import { selectCurrentUser } from "./redux/user/user.selectors.js";
 import { createStructuredSelector } from "reselect";
 import { checkUserSession } from "./redux/user/user.actions";
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
-    const { checkUserSession } = this.props;
+// class App extends React.Component {
+const App = ({ checkUserSession, currentUser }) => {
+  useEffect(() => {
     checkUserSession();
-  }
-  componentWillUnmount() {
-    // this.unsubscribeFromAuth();
-  }
+  }, [checkUserSession]);
 
-  render() {
-    return (
-      <div>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/shop/*" element={<ShopPage />}></Route>
-          <Route path="/checkout" element={<CheckoutPage />}></Route>
-          {/* <Route exact path="/signin" element={<Navigate replace to="/" />} /> */}
+  return (
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/shop/*" element={<ShopPage />}></Route>
+        <Route path="/checkout" element={<CheckoutPage />}></Route>
+        {/* <Route exact path="/signin" element={<Navigate replace to="/" />} /> */}
 
-          <Route
-            path="/signin"
-            element={
-              this.props.currentUser ? (
-                <Navigate to="/" replace />
-              ) : (
-                <SignInAndSignUpPage />
-              )
-            }
-          ></Route>
+        <Route
+          path="/signin"
+          element={
+            currentUser ? <Navigate to="/" replace /> : <SignInAndSignUpPage />
+          }
+        ></Route>
 
-          {/* <Route exact path="/signin" render={<SignInAndSignUpPage />}></Route> */}
-        </Routes>
-      </div>
-    );
-  }
-}
+        {/* <Route exact path="/signin" render={<SignInAndSignUpPage />}></Route> */}
+      </Routes>
+    </div>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,

@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import "./sign-in.styles.scss";
 
@@ -11,7 +10,7 @@ import {
 } from "../../redux/user/user.actions";
 
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {
-  const [userCredentials, setCredentials] = useState({
+  const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: "",
   });
@@ -24,7 +23,7 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
 
   const handleChange = (event) => {
     const { value, name } = event.target;
-    setCredentials({ ...userCredentials, [name]: value });
+    setUserCredentials({ ...userCredentials, [name]: value });
   };
 
   return (
