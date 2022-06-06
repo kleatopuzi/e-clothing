@@ -6,8 +6,9 @@ const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
   const publishableKey =
     "pk_test_51L3gITKcbXHcntpUmj2wGddms4UbDsUpTeY0GVciByEfscpl7yG56tDNlA80hoOcm6gEOetEpEz0V7aXcpJWINKK00YzLJaOCx";
+
   const onToken = (token) => {
-    alert(1);
+    // alert(1);
     axios({
       url: "payment",
       method: "post",
@@ -17,14 +18,16 @@ const StripeCheckoutButton = ({ price }) => {
       },
     })
       .then((response) => {
-        console.alert("Payment SUCCESSFUL");
+        alert("Payment SUCCESSFUL");
+        console.log("token", response);
       })
       .catch((error) => {
         console.log("Payment errpr:", JSON.parse(error));
         alert("ERROR");
+        console.log("err", error);
       });
-    console.log(token);
-    alert("Payment Successful");
+    // console.log("token", priceForStripe, token);
+    // alert("Payment Successful");
   };
   return (
     <StripeChekout
