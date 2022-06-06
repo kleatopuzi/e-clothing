@@ -1,7 +1,11 @@
-import { express } from "express";
+// import { express } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import path from "path";
+
+var express = require("express");
+// var cors = require("cors");
+// var bodyParser = require("body-parser");
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
@@ -33,5 +37,12 @@ app.post("/payment", (req, res) => {
     amount: req.body.amount,
     currency: "usd",
   };
-  stripe.charges.create(body, (stripeErr, stripeRes) => {});
+
+  stripe.charges.create(body, (stripeErr, stripeRes) => {
+    if (stripeErr) {
+      res.status(500).send({ error: stripeErr });
+    } else {
+      res.status(200).send({ success: stripeRes });
+    }
+  });
 });
