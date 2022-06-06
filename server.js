@@ -2,15 +2,16 @@
 import bodyParser from "body-parser";
 import cors from "cors";
 import path from "path";
+import { Express } from "express";
 
-var express = require("express");
+// var express = require("express");
 // var cors = require("cors");
 // var bodyParser = require("body-parser");
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-const app = express();
+const app = Express();
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
+  app.use(Express.static(path.join(__dirname, "client/build")));
 
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
