@@ -1,12 +1,7 @@
-// import { express } from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
-import path from "path";
-// import { Express } from "express";
-
 var express = require("express");
-// var cors = require("cors");
-// var bodyParser = require("body-parser");
+var path = require("path");
+var cors = require("cors");
+var bodyParser = require("body-parser");
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
