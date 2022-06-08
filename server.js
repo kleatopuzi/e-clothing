@@ -27,6 +27,8 @@ app.listen(port, (error) => {
   console.log("Server running on port" + port);
 });
 
+// added express servet to handle backend stripe payments
+
 app.post("/payment", (req, res) => {
   const body = {
     source: req.body.token.id,
