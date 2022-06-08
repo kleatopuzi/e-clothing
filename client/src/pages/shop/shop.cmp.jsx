@@ -8,7 +8,7 @@ import CollectionsOverviewContainer from "../../components/collections-overview/
 import CollectionsPageContainer from "../collection/collection.container";
 
 // class ShopPage extends React.Component {
-const ShopPage = () => {
+const ShopPage = ({ fetchCollectionsStart }) => {
   useEffect(() => {
     fetchCollectionsStart();
   }, [fetchCollectionsStart]);
